@@ -1,0 +1,64 @@
+    .gitignore: You should start with this to ensure that unwanted files are not included in the repository from the very beginning.
+
+    src/ with init.py, main.py, sitemap_finder.py, sqli_tester.py, reporter.py: Start developing the core functionality of your tool. This will help you understand what dependencies your tool will have, which is useful for the next steps.
+
+    requirements.txt: As you code and find out which Python packages you need, you should list them here.
+
+    setup.py: Once you have a clear idea of the requirements and the basic structure of your project, you can create your setup file.
+
+    tests/ with init.py, test_sitemap_finder.py, test_sqli_tester.py, test_reporter.py: After creating the main code, it's a good idea to start with tests to ensure that everything is working as expected.
+
+    Dockerfile: Once you have the main code and tests, you can create a Dockerfile that installs the necessary dependencies and runs your tool.
+
+    config.ini or .env: If your tool needs any configuration or environment variables, create the necessary files for them.
+
+    .github/workflows: If you are planning to use GitHub Actions for CI/CD, you can now create the necessary workflows.
+
+    docs/ with usage.md: Once the tool is complete and functioning as expected, you can write detailed usage instructions.
+
+    README.md: Now that you have a complete tool and you know how to use it and what it does, you can write a comprehensive README.
+
+    LICENSE: Finally, you should decide under which license you want to release your tool.
+    
+    -------------------------------------------------------------------------------------------
+        README.md: This should include a description of the tool, how to install it, how to use it, any dependencies, and any other necessary instructions.
+
+    LICENSE: Specifies the license under which the tool is released.
+
+    .gitignore: Specifies which files Git should ignore. This typically includes files that are generated when the program runs or when a developer is using a specific IDE.
+
+    setup.py: This file is used for packaging Python projects. It includes information about the package like name, version, packages included, scripts included, etc.
+
+    requirements.txt: List all dependencies that need to be installed for the tool to work.
+
+    src/: This directory contains the source code of the tool. It's common to structure the source code in a directory like this.
+
+        init.py: This file is necessary to make Python treat the directory as containing packages.
+
+        main.py: This is the main entry point of the tool.
+
+        sitemap_finder.py: A module for finding all sitemaps.
+
+        sqli_tester.py: A module for testing SQLi on the sitemaps.
+
+        reporter.py: A module for reporting the vulnerabilities.
+
+    tests/: This directory contains all the tests for the tool. It's important to have tests to ensure that everything is working as expected.
+
+        init.py: As before, this file is necessary to make Python treat the directory as containing packages.
+
+        test_sitemap_finder.py: Tests for the Sitemap Finder module.
+
+        test_sqli_tester.py: Tests for the SQLi Tester module.
+
+        test_reporter.py: Tests for the Reporter module.
+
+    docs/: Contains all the documentation for the tool. This can be as simple or as complex as needed, but at a minimum should explain what the tool does and how to use it.
+        usage.md: Detailed guide on how to use the tool.
+
+    .github/workflows: If you're planning to use GitHub, you can set up actions for Continuous Integration/Continuous Deployment.
+
+    Dockerfile: If you plan on containerizing the application, a Dockerfile would be necessary to define the application's environment.
+
+    config.ini or .env: A file to store all your configuration options, such as database credentials, API keys, etc. Note that sensitive data should not be committed to the repository, and this file should be added to .gitignore.
+    
