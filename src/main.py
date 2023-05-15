@@ -164,12 +164,6 @@ class SitemapSQLiTool:
     # 3. Trigger alerts or notifications
     # Customize the actions based on your specific requirements and objectives
 
-    def process_successful_sqli(self, url, domain):
-        # Handle successful SQL injection
-        # Modify the logic based on your specific objectives
-        # Retrieve sensitive information, modify data, or perform any other actions
-        logger.info(f"Successful SQL injection detected for URL {url} in domain {domain}")
-        # Add your custom code here to perform actions for successful injection
 
     def parse_sitemap(self, domain):
         # Implement sitemap parsing here...
