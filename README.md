@@ -12,7 +12,7 @@ SMapQL is a robust tool for detecting SQL Injection in sitemaps. It automates sc
 
 ## Requirements
 
-- Python 3.x
+- Python 3.10.10
 - `argparse` library
 - `requests` library
 - `beautifulsoup4` library
