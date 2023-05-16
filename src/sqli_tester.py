@@ -63,4 +63,15 @@ class SqliTester:
             )
 
     def is_sqli_successful(self, response):
-        if "Error" in response.text or "
+        if "Error" in response.text or "SQL syntax" in response.text:
+            return True
+        return False
+
+    def process_successful_sqli(self, url, domain):
+        logger.info(f"Successful SQL injection detected for URL {url} in domain {domain}")
+        # Add your custom code here to perform actions for successful injection
+        # For example:
+        # 1. Retrieve and process the data from the response
+        # 2. Store the data in a database or file
+        # 3. Trigger alerts or notifications
+        # Customize the actions based on your specific requirements and objectives
