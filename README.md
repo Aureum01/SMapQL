@@ -82,6 +82,11 @@ To check a single domain with a proxy:
 
 Please replace example.com and yourproxy:8080 with the actual domain and proxy you want to use.
 
+# CTF Challenge
+### Example command to run the script on an IP address
+
+`python smapql.py -t http://[IP address] -th 10 -o report.txt`
+
 ## License:
 
 MIT License
