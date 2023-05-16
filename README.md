@@ -30,6 +30,7 @@ urllib library
 
 `pip install -r requirements.txt`
 
+
 ## Usage
 
 `python script.py -t domain1.com domain2.com -th 10 -d 1 -o output.txt -p http://proxy.example.com:8080`
@@ -86,6 +87,10 @@ Please replace example.com and yourproxy:8080 with the actual domain and proxy y
 ### Example command to run the script on an IP address
 
 `python smapql.py -t http://[IP address] -th 10 -o report.txt`
+
+# Customization
+
+Check the /src folder for the Singular folder which includes the overall script for you to customize to your needs or add to your development.
 
 ## License:
 
