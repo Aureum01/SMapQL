@@ -133,84 +133,74 @@ class SitemapSQLiTool:
             )
 
 
-def is_sqli_successful(self, response):
-    # Capture and analyze the responses to identify successful injections
-    # Look for specific patterns, error messages, or anomalies in the responses
-    # that indicate a successful SQL injection.
-    # Customize the logic based on your target application's responses
-    if "Error" in response.text or "SQL syntax" in response.text:
-        return True
-    return False
+    def is_sqli_successful(self, response):
+        # Capture and analyze the responses to identify successful injections
+        # Look for specific patterns, error messages, or anomalies in the responses
+        # that indicate a successful SQL injection.
+        # Customize the logic based on your target application's responses
+        if "Error" in response.text or "SQL syntax" in response.text:
+            return True
+        return False
 
 
-def process_successful_sqli(self, url, domain):
-    # Handle successful SQL injection
-    # Modify the logic based on your specific objectives
-    logger.info(f"Successful SQL injection detected for URL {url} in domain {domain}")
-    # Add your custom code here to perform actions for successful injection
-    # For example:
-    # 1. Retrieve and process the data from the response
-    # 2. Store the data in a database or file
-    # 3. Trigger alerts or notifications
-    # Customize the actions based on your specific requirements and objectives
+    def process_successful_sqli(self, url, domain):
+        # Handle successful SQL injection
+        # Modify the logic based on your specific objectives
+        logger.info(f"Successful SQL injection detected for URL {url} in domain {domain}")
+        # Add your custom code here to perform actions for successful injection
+        # For example:
+        # 1. Retrieve and process the data from the response
+        # 2. Store the data in a database or file
+        # 3. Trigger alerts or notifications
+        # Customize the actions based on your specific requirements and objectives
 
 
-def parse_sitemap(self, domain):
-    try:
-        # Send request to the sitemap
-        response = requests.get(f"https://{domain}/sitemap.xml", proxies=self.proxies)
-        response.raise_for_status()  # Raises stored HTTPError, if one occurred
+    def parse_sitemap(self, domain):
+        try:
+            # Send request to the sitemap
+            response = requests.get(f"https://{domain}/sitemap.xml", proxies=self.proxies)
+            response.raise_for_status()  # Raises stored HTTPError, if one occurred
 
-        # Parse the sitemap XML
-        soup = BeautifulSoup(response.content, "xml")
-        urls = [url.text for url in soup.find_all("loc")]
+            # Parse the sitemap XML
+            soup = BeautifulSoup(response.content, "xml")
+            urls = [url.text for url in soup.find_all("loc")]
 
-        # Check each URL for SQLi vulnerabilities
-        for url in urls:
-            self.check_sqli_vulnerability(url, domain)
+            # Check each URL for SQLi vulnerabilities
+            for url in urls:
+                self.check_sqli_vulnerability(url, domain)
 
-    except requests.exceptions.HTTPError as http_err:
-        logger.error(
-            f"HTTP error occurred while fetching the sitemap for domain {domain}: {http_err}"
-        )
-    except requests.exceptions.RequestException as req_err:
-        logger.error(
-            f"An error occurred while fetching the sitemap for domain {domain}: {req_err}"
-        )
-
-
-def __init__(self, target_domains, thread_count, rate_limit_delay=1, proxies=None):
-    self.target_domains = target_domains
-    self.thread_count = thread_count
-    self.rate_limit_delay = rate_limit_delay
-    self.proxies = proxies
-    self.sitemap_subdomains = []
-    self.vulnerable_domains = set()  # Set to avoid duplicates
-    self.queue = Queue()
+        except requests.exceptions.HTTPError as http_err:
+            logger.error(
+                f"HTTP error occurred while fetching the sitemap for domain {domain}: {http_err}"
+            )
+        except requests.exceptions.RequestException as req_err:
+            logger.error(
+                f"An error occurred while fetching the sitemap for domain {domain}: {req_err}"
+            )
 
 
-def report(self, output_file="vulnerable_domains.txt"):
-    """
-    Report the vulnerabilities.
-    Currently, the method supports txt, json, and csv formats.
-    """
-    # Determine the output format from the file extension
-    output_format = output_file.split(".")[-1]
-    if output_format == "json":
-        with open(output_file, "w") as f:
-            json.dump(list(self.vulnerable_domains), f, indent=4)
-    elif output_format == "csv":
-        with open(output_file, "w") as f:
-            writer = csv.writer(f)
-            writer.writerow(["Domain"])
-            for domain in self.vulnerable_domains:
-                writer.writerow([domain])
-    else:  # default to txt
-        with open(output_file, "w") as f:
-            for domain in self.vulnerable_domains:
-                f.write(f"{domain}\n")
+    def report(self, output_file="vulnerable_domains.txt"):
+        """
+        Report the vulnerabilities.
+        Currently, the method supports txt, json, and csv formats.
+        """
+        # Determine the output format from the file extension
+        output_format = output_file.split(".")[-1]
+        if output_format == "json":
+            with open(output_file, "w") as f:
+                json.dump(list(self.vulnerable_domains), f, indent=4)
+        elif output_format == "csv":
+            with open(output_file, "w") as f:
+                writer = csv.writer(f)
+                writer.writerow(["Domain"])
+                for domain in self.vulnerable_domains:
+                    writer.writerow([domain])
+        else:  # default to txt
+            with open(output_file, "w") as f:
+                for domain in self.vulnerable_domains:
+                    f.write(f"{domain}\n")
 
-    logger.info("Vulnerabilities reported.")
+        logger.info("Vulnerabilities reported.")
 
 
 if __name__ == "__main__":
