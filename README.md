@@ -50,47 +50,38 @@ The script will perform the following steps:
     Identify successful SQL injections and store the vulnerable domains.
     Generate a report in the specified output format (txt, json, or csv) containing the vulnerable domains.
 
-Getting Help
+# Getting Help
 
 To get help and see a list of available options, use the -h option:
 
-bash
+`python3 smapql.py -h`
 
-python3 smapql.py -h
-
-Checking a Single Domain
+# Checking a Single Domain
 
 To check a single domain with default settings (10 threads, 1 second delay, no proxies, output to vulnerable_domains.txt):
 
-bash
+`python3 smapql.py -t example.com`
 
-python3 smapql.py -t example.com
-
-Checking Multiple Domains
+# Checking Multiple Domains
 
 To check multiple domains with default settings:
 
-bash
+`python3 smapql.py -t example1.com example2.com example3.com`
 
-python3 smapql.py -t example1.com example2.com example3.com
-
-Setting Threads and Delay Time
+# Setting Threads and Delay Time
 
 To check a single domain with 5 threads and a 2-second delay, outputting results to results.txt:
 
-bash
+`python3 smapql.py -t example.com -th 5 -d 2 -o results.txt`
 
-python3 smapql.py -t example.com -th 5 -d 2 -o results.txt
-
-Using a Proxy
+# Using a Proxy
 
 To check a single domain with a proxy:
 
-bash
-
-    python3 smapql.py -t example.com -p http://yourproxy:8080
+    `python3 smapql.py -t example.com -p http://yourproxy:8080`
 
 Please replace example.com and yourproxy:8080 with the actual domain and proxy you want to use.
+
 ## License:
 
 MIT License
