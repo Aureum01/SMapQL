@@ -1,0 +1,21 @@
+SMapQL/
+├── src/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── sitemap_finder.py
+│   ├── sqli_tester.py
+│   └── reporter.py
+├── tests/
+│   ├── __init__.py
+│   ├── test_sitemap_finder.py
+│   ├── test_sqli_tester.py
+│   └── test_reporter.py
+├── requirements.txt
+├── setup.py
+├── Dockerfile
+├── config.ini (or .env)
+├── .github/
+│   └── workflows/
+│       └── your_workflow.yml
+└── docs/
+    └── usage.md
