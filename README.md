@@ -24,6 +24,7 @@ beautifulsoup4 (bs4) library
 queue library
 threading library
 urllib library
+**tensflow update**
 
 ## Installation
 
