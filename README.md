@@ -88,6 +88,7 @@ Please replace example.com and yourproxy:8080 with the actual domain and proxy y
 ### Example command to run the script on an IP address
 
 `python smapql.py -t http://[IP address] -th 10 -o report.txt`
+`python smapql.py -t http://[IP address] -th 6 -o -r report.txt`
 
 # Customization
 
